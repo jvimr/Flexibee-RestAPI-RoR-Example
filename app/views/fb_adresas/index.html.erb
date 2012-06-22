@@ -1,4 +1,4 @@
-<h1>Listing fb_adresas</h1>
+<h1>Seznam adres obsahujicich "<%=@search%>" nactenych z Flexibee</h1>
 
 
 <%= form_tag '/fb_adresas/', :method=>'get' do -%>
@@ -8,24 +8,32 @@
    <%= submit_tag 'Hledat' %></div>
 <% end -%>
 
-<table>
+<table border="1">
   <tr>
     <th>fb id</th>
+    <th>fb kod</th>
     <th>nazev</th>
     <th>ico</th>
-    <th>FB</th>
+    <th>pdf</th>
+    
   </tr>
 
 <% @fb_adresas.each do |fb_adresa| %>
   <tr>
-  	<td><%= fb_adresa.id %></td>
+  	<td>
+  		<%= link_to fb_adresa.id.to_s, FbAdresa.view_url( fb_adresa.id), :target=>'_new' %>
+  	</td>
+  	<td>
+  	    	<%= link_to fb_adresa.kod, FbAdresa.edit_url( fb_adresa.id) , :target=>'_new'%>
+  	</td>
     <td><%= link_to "#{fb_adresa.nazev}", :id=> fb_adresa.id , :controller=>:fb_adresas , :action =>'show' %></td>
     <td><%= fb_adresa.ic%></td>
     
+    
     <td>
-    	<%= link_to 'fb', FbAdresa.view_url( fb_adresa.id), :target=>'_new' %>
-    	<%= link_to 'edit', FbAdresa.edit_url( fb_adresa.id) , :target=>'_new'%>
-    	<%= link_to 'pdf', FbAdresa.pdf_url( fb_adresa.id) , :target=>'_new' %>
+
+
+    	<%= link_to "#{FbAdresa.pdf_url( fb_adresa.id)}", FbAdresa.pdf_url( fb_adresa.id) , :target=>'_new' %>
     	
     	
     </td>

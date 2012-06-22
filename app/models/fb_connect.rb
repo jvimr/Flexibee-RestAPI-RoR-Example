@@ -103,6 +103,10 @@ class FbConnect < ActiveResource::Base
       res = res.attributes[res.attributes.keys.first] 
      end 
      
+     if !res.nil? && res.attributes.length == 1 && res.attributes.keys.first == 'version'
+       res = nil
+     end
+     
      res
      
   end

@@ -1,14 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 
+<h1>Detail adresy, jak jsme ji nacetli pres RestAPI z Flexibee</h1>
 
 
 
-Adresa ve flexibee id:
-<%= link_to "#{@fb_adresa.id}", FbAdresa.view_url(@fb_adresa.id), {:target=>"new"} %>
 
-<br />
-Polozky: <br />
+<h2>Polozky ktere vratilo Flexibee:</h2> 
 
 <% @fb_adresas_keys.each do |key|  %>
 
@@ -25,14 +23,22 @@ Polozky: <br />
 
 <br />
 
+<h2>
+zobrazeni stranky detailu adresy ve flexibee:
+</h2>
+<%= link_to "#{FbAdresa.view_url(@fb_adresa.id)}", FbAdresa.view_url(@fb_adresa.id), {:target=>"new"} %>
 
-URL ve Flexibee stranky s fakturami tohoto subjektu:
+
+<h2>
+URL ve Flexibee - stranka s fakturami tohoto subjektu:
+</h2>
 <%= link_to "#{FbAdresa.faktury_url(@fb_adresa.id)}", FbAdresa.faktury_url(@fb_adresa.id), :target=>'_new'%>
 
 <br />
 
-Faktury:
-
+<h2>
+Faktury navazane ve flexibee k teto adrese:
+</h2>
 <% @fb_invoices.each do |invoice| %>
    <%= link_to "#{invoice.kod}", :id=>invoice.id, :controller=>'fb_invoices', :action=>'show'%>
 

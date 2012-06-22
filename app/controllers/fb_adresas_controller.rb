@@ -11,7 +11,9 @@ class FbAdresasController < ApplicationController
     
     Rails.logger.debug "received #{@fb_adresas}"
     
-    @fb_adresas = @fb_adresas.adresar
+    @fb_adresas = @fb_adresas.adresar unless @fb_adresas.nil?
+    
+    @fb_adresas = Array.new if @fb_adresas.nil?
 
     respond_to do |format|
       format.html # index.html.erb
@@ -31,7 +33,7 @@ class FbAdresasController < ApplicationController
     
     @fb_invoices = FbInvoice.find_by_id "(firma = #{@fb_adresa.id})"
     
-    
+    #pokud nam server neco vratil, tak to zobrazime
     if @fb_invoices.respond_to?('faktura_vydana')
       
       
@@ -39,6 +41,8 @@ class FbAdresasController < ApplicationController
         @fb_invoices = @fb_invoices.faktura_vydana 
         Rails.logger.debug "faktura nalezena, vracim jen ji "
       else
+        #pokud byl nalezen jen jeden zaznam, nedostaneme zpet pole zaznamu, 
+        #ale jen jeden zaznam. Chceme ale pres nej iterovat, tak ho vlozime do pole ktere tim padem bude mit jeden prvek
         cache = @fb_invoices
         @fb_invoices = Array.new
         @fb_invoices[0] = cache.faktura_vydana
@@ -47,10 +51,10 @@ class FbAdresasController < ApplicationController
       end
       
       
-      
+      #pokud nenasel zadny zaznam, tak nam vratil prazdnou polozku, ktera nema metodu "faktura_vydana". Abychom mohli zobrazit (prazdny) seznam faktur, vratime prazdne pole
     else
       
-      @fb_invoices = Hash.new
+      @fb_invoices = Array.new
       Rails.logger.debug 'faktura nenalezena'
     end 
     
