@@ -1,0 +1,23 @@
+<h1>Listing fb_invoices</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Kod</th>
+    <th>FB</th>
+  </tr>
+
+<% @fb_invoices.faktura_vydana.each do |fb_invoice| %>
+  <tr>
+    <td><%= link_to "#{fb_invoice.id} #{fb_invoice.kod}", fb_invoice.id %></td>
+    <td><%= link_to "#{fb_invoice.id} #{fb_invoice.kod}", fb_invoice.id %></td>
+    <td><%= link_to "View", FbInvoice.view_url(fb_invoice.id) , :target=>'_empty' %></td>
+    <td><%= link_to "Edit", FbInvoice.edit_url(fb_invoice.id) , :target=>'_empty' %></td>
+    <td><%= link_to "PDF", FbInvoice.pdf_url(fb_invoice.id) , :target=>'_empty' %></td>
+    
+    
+  </tr>
+<% end %>
+</table>
+
+<br />

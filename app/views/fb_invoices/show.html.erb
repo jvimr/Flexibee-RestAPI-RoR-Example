@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+
+
+
+FAktura ve flexibee id:
+<%= link_to "#{@fb_invoice.id}", FbInvoice.view_url(@fb_invoice.id), {:target=>"new"} %>
+
+<br />
+Polozky: <br />
+
+<% @fb_invoice_keys.each do |key|  %>
+
+<% val = @fb_invoice_hash[key] %>
+ <small>
+
+	<%= key%>: 
+    [<%= val %>]
+</small>
+<br />
+
+
+<% end%>
+
+<br />
+
+
+<%= link_to 'Edit', edit_fb_invoice_path(@fb_invoice) %> |
+<%= link_to 'Back', fb_invoices_path %>

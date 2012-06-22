@@ -6,6 +6,8 @@ class FbInvoice < FbConnect
   #budeme pristupovat k evidenci "faktura-vydana"
   self.element_name = "faktura-vydana"
   
+  self.format = :xml
+  
   self.url_params = FbConnect.url_params #"?mode=ruby"
 
   def self.new_invoice args={}
@@ -51,7 +53,7 @@ class FbInvoice < FbConnect
   
 
   
-  def self.find_by_id id, params={}
+  def self.find_by_id1 id, params={}
          
     tu = self.url_root_path + self.element_name
     
@@ -61,7 +63,7 @@ class FbInvoice < FbConnect
     
     
     
-    result = connection.get tu,   {'Accept'=>'application/json'}
+    result = connection.get tu,   {'Accept'=>'application/json', 'mode'=>'ruby'}
     result = result['faktura-vydana']
     result.symbolize_keys!
     

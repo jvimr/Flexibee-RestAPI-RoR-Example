@@ -1,0 +1,2 @@
+module FbInvoicesHelper
+end

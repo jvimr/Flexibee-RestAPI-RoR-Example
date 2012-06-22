@@ -12,6 +12,7 @@ FlexibeeConnect::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
      resources :fb_adresas
+     resources :fb_invoices
 
   # Sample resource route with options:
   #   resources :products do
