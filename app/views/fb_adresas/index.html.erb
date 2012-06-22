@@ -1,0 +1,38 @@
+<h1>Listing fb_adresas</h1>
+
+
+<%= form_tag '/fb_adresas/', :method=>'get' do -%>
+  <div>
+  <%= label_tag :search, 'Hledat dle jména/příjmení/firmy' %>:
+  <%= text_field_tag :search, @search %>
+   <%= submit_tag 'Hledat' %></div>
+<% end -%>
+
+<table>
+  <tr>
+    <th>fb id</th>
+    <th>nazev</th>
+    <th>ico</th>
+    <th>FB</th>
+  </tr>
+
+<% @fb_adresas.each do |fb_adresa| %>
+  <tr>
+  	<td><%= fb_adresa.id %></td>
+    <td><%= link_to "#{fb_adresa.nazev}", :id=> fb_adresa.id , :controller=>:fb_adresas , :action =>'show' %></td>
+    <td><%= fb_adresa.ic%></td>
+    
+    <td>
+    	<%= link_to 'fb', FbAdresa.view_url( fb_adresa.id), :target=>'_new' %>
+    	<%= link_to 'edit', FbAdresa.edit_url( fb_adresa.id) , :target=>'_new'%>
+    	<%= link_to 'pdf', FbAdresa.pdf_url( fb_adresa.id) , :target=>'_new' %>
+    	
+    	
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+
+
+
+
+Adresa ve flexibee id:
+<%= link_to "#{@fb_adresa.id}", FbAdresa.view_url(@fb_adresa.id), {:target=>"new"} %>
+
+<br />
+Polozky: <br />
+
+<% @fb_adresas_keys.each do |key|  %>
+
+<% val = @fb_adresas_hash[key] %>
+ <small>
+
+	<%= key%>: 
+    [<%= val %>]
+</small>
+<br />
+
+
+<% end%>
+
+<br />
+
+
+URL ve Flexibee stranky s fakturami tohoto subjektu:
+<%= link_to "#{FbAdresa.faktury_url(@fb_adresa.id)}", FbAdresa.faktury_url(@fb_adresa.id), :target=>'_new'%>
+
+<br />
+
+<%= link_to 'Back', fb_adresas_path %>
