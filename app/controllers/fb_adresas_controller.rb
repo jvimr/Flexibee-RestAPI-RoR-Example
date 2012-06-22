@@ -30,6 +30,19 @@ class FbAdresasController < ApplicationController
     
     
     @fb_invoices = FbInvoice.find_by_id "(firma = #{@fb_adresa.id})"
+    
+    
+    if @fb_invoices.respond_to?('faktura_vydana')
+      @fb_invoices = @fb_invoices.faktura_vydana
+      Rails.logger.debug "faktura nalezena, vracim jen ji "
+      
+    else
+      
+      @fb_invoices = Hash.new
+      Rails.logger.debug 'faktura nenalezena'
+    end 
+    
+    Rails.logger.debug "invoices: #{@fb_invoices}"
 
 
     respond_to do |format|

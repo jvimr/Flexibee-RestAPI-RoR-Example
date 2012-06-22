@@ -99,7 +99,7 @@ class FbConnect < ActiveResource::Base
      #timto opravime co dostaneme tak, aby vraceny objekt vypadal pokazde stejne
      #v pripade, ze vraceny objekt ma jen 1 attribut, tak vratime rovnou hodnotu tohoto attributu
      
-     if !res.nil? && res.attributes.length == 1
+     if !res.nil? && res.attributes.length == 1 && res.attributes.keys.first != 'version'
       res = res.attributes[res.attributes.keys.first] 
      end 
      

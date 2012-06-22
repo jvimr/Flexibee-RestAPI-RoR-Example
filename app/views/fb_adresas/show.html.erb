@@ -33,7 +33,7 @@ URL ve Flexibee stranky s fakturami tohoto subjektu:
 
 Faktury:
 
-<% @fb_invoices.faktura_vydana.each do |invoice| %>
+<% @fb_invoices.each do |invoice| %>
    <%= link_to "#{invoice.kod}", :id=>invoice.id, :controller=>'fb_invoices', :action=>'show'%>
 
 <% end %>
