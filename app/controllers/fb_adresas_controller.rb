@@ -28,6 +28,8 @@ class FbAdresasController < ApplicationController
     @fb_adresas_hash = @fb_adresa.attributes.symbolize_keys
     @fb_adresas_keys = @fb_adresas_hash.keys.sort{|n,m| n.to_s <=> m.to_s }
     
+    
+    @fb_invoices = FbInvoice.find_by_id "(firma = #{@fb_adresa.id})"
 
 
     respond_to do |format|
