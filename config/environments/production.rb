@@ -46,4 +46,31 @@ FlexibeeConnect::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  
+  #zatim v production budeme pouzivat take pripojeni do demo.flexibee.eu, vyuzijeme to na heroku instalaci
+   #nastaveni pristupu do flexibee
+  #vpodstate jde o rozepsane url:
+  #http://demo.flexibee.eu:80/c/demo/
+  config.flexibee_host = "demo.flexibee.eu"
+  config.flexibee_port = "80"
+  config.flexibee_proto = "http"
+  config.flexibee_firma = "demo"
+
+  #uzivatel a heslo pro pripojeni
+
+  config.flexibee_user = "winstrom"
+  config.flexibee_password = "winstrom"
+
+  config.flexibee_fakt_primUcet = "code:321001"
+  config.flexibee_fakt_protiUcet="code:602001"
+  config.flexibee_fakt_typUcOp = "code:TRŽBA SLUŽBY"
+  config.flexibee_fakt_bankovniUcet="code:BANKOVNÍ ÚČET"
+  config.flexibee_fakt_clenDph="code:01-02"
+  config.flexibee_fakt_formaUhrK_prevod="formaUhr.prevod"
+  config.flexibee_fakt_formaUhrK_hotove="formaUhr.hotove"
+
+  config.flexibee_hotUhrada_pokladna="code:DOMA"
+  config.flexibee_hotUhrada_typDokl="code:TYP DOMA"
+
+  
 end
