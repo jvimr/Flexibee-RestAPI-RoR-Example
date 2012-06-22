@@ -33,7 +33,7 @@ class FbConnect < ActiveResource::Base
   self.element_name = "adresar"
   
   #budeme komunikovat ve formatu json, mozna bychom mohli pouzit xml
-  self.format = :json
+  #self.format = :json
   
 
   
