@@ -33,8 +33,20 @@ class FbAdresasController < ApplicationController
     
     
     if @fb_invoices.respond_to?('faktura_vydana')
-      @fb_invoices = @fb_invoices.faktura_vydana
-      Rails.logger.debug "faktura nalezena, vracim jen ji "
+      
+      
+      if @fb_invoices.faktura_vydana.is_a?(Array)
+        @fb_invoices = @fb_invoices.faktura_vydana 
+        Rails.logger.debug "faktura nalezena, vracim jen ji "
+      else
+        cache = @fb_invoices
+        @fb_invoices = Array.new
+        @fb_invoices[0] = cache.faktura_vydana
+        
+        Rails.logger.debug "faktura single prevedena na aray #{@fb_invoices}"
+      end
+      
+      
       
     else
       
