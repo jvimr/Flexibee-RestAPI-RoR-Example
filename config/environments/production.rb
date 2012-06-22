@@ -63,8 +63,8 @@ FlexibeeConnect::Application.configure do
 
   config.flexibee_fakt_primUcet = "code:321001"
   config.flexibee_fakt_protiUcet="code:602001"
-  config.flexibee_fakt_typUcOp = "code:TRŽBA SLUŽBY"
-  config.flexibee_fakt_bankovniUcet="code:BANKOVNÍ ÚČET"
+  config.flexibee_fakt_typUcOp = "code:TR"
+  config.flexibee_fakt_bankovniUcet="code:BANKOVNET"
   config.flexibee_fakt_clenDph="code:01-02"
   config.flexibee_fakt_formaUhrK_prevod="formaUhr.prevod"
   config.flexibee_fakt_formaUhrK_hotove="formaUhr.hotove"
